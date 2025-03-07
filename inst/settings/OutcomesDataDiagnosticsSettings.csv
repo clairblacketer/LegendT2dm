@@ -1,0 +1,34 @@
+cohortId,atlasId,atlasName,name,min_age,max_age,required_duration_days,required_domains,desired_domains,required_visits,desired_visits
+1,538,3-point MACE,outcome/3pt_MACE,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+2,539,4-point MACE,outcome/4pt_MACE,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+3,540,Acute myocardial infarction,outcome/Acute_myocardial_infarction,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+4,541,Acute renal failure,outcome/Acute_renal_failure,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+5,558,Glycemic control,outcome/Glycemic_control,18,NA,366,"condition,drug",measurementValues,NA,NA
+6,542,Hospitalization with heart failure,outcome/Hospitalization_with_heart_failure,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+7,543,Measured renal dysfunction,outcome/Measured_renal_dysfunction,18,NA,366,"condition,drug",measurementValues,NA,NA
+8,557,Revascularization,outcome/Revascularization,18,NA,366,"condition,drug",procedure,NA,NA
+9,544,Stroke,outcome/Stroke,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+10,545,Sudden cardiac death,outcome/Sudden_cardiac_death,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+21,546,Abnormal weight gain,outcome/Abnormal_weight_gain,18,NA,366,"condition,drug",observation,NA,NA
+22,547,Abnormal weight loss,outcome/Abnormal_weight_loss,18,NA,366,"condition,drug",observation,NA,NA
+23,548,Acute pancreatitis,outcome/Acute_pancreatitis,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+24,549,All-cause mortality,outcome/All-cause_mortality,18,NA,365,"condition,drug",death,NA,NA
+25,559,Bladder cancer,outcome/Bladder_cancer,18,NA,365,"condition,drug",NA,NA,NA
+26,575,Bone fracture,outcome/Bone_fracture,18,NA,365,"condition,drug",NA,NA,NA
+27,560,Breast cancer,outcome/Breast_cancer,18,NA,365,"condition,drug",NA,NA,NA
+28,572,Diabetic ketoacidosis,outcome/Diabetic_ketoacidosis,18,NA,365,"condition,drug",NA,NA,"IP,ER"
+29,550,Diarrhea,outcome/Diarrhea,18,NA,365,"condition,drug",NA,NA,NA
+30,563,Genitourinary infection,outcome/Genitourinary_infection,18,NA,365,"condition,drug",NA,NA,NA
+31,552,Hyperkalemia,outcome/Hyperkalemia,18,NA,365,"condition,drug",measurementValues,NA,NA
+32,564,Hypoglycemia,outcome/Hypoglycemia,18,NA,365,"condition,drug",NA,NA,NA
+33,553,Hypotension,outcome/Hypotension,18,NA,365,"condition,drug",NA,NA,NA
+34,569,Joint pain,outcome/Joint_pain,18,NA,365,"condition,drug",NA,NA,NA
+35,570,Lower extremity amputation,outcome/LE_amputation,18,NA,365,"condition,drug",procedure,NA,NA
+36,554,Nausea,outcome/Nausea,18,NA,365,"condition,drug",NA,NA,NA
+37,551,Peripheral edema,outcome/Edema,18,NA,365,"condition,drug",NA,NA,NA
+38,574,Photosensitivity,outcome/Photosensitivity,18,NA,365,"condition,drug",NA,NA,NA
+39,571,Renal cancer,outcome/Renal_cancer,18,NA,365,"condition,drug",NA,NA,NA
+40,573,Thyroid tumor,outcome/Thyroid_tumor,18,NA,365,"condition,drug",NA,NA,NA
+41,555,Venous thromboembolism,outcome/Venous_thromboembolic_events,18,NA,365,"condition,drug",NA,NA,NA
+42,556,Vomiting,outcome/Vomiting,18,NA,365,"condition,drug",NA,NA,NA
+43,556,Malignant thyroid tumor,outcome/Malignant_thyroid_tumor,18,NA,365,"condition,drug",NA,NA,NA
