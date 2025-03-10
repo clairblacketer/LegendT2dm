@@ -188,24 +188,43 @@ for(m in 1:nrow(outcomes)){
   }
 }
 
-tempFileName <- tempfile()
+### Saving the json -----
 
-ddAnalysisToRow <- function(ddAnalysis) {
-  ParallelLogger::saveSettingsToJson(ddAnalysis, tempFileName)
-  row <- tibble(
-    analysisId = ddAnalysis$analysisId,
-    description = ddAnalysis$description,
-    definition = readChar(tempFileName, file.info(tempFileName)$size)
-  )
-  invisible(row)
+# tempFileName <- tempfile()
+#
+# ddAnalysisToRow <- function(ddAnalysis) {
+#   ParallelLogger::saveSettingsToJson(ddAnalysis, tempFileName)
+#   row <- tibble(
+#     analysisId = ddAnalysis$analysisId,
+#     description = ddAnalysis$description,
+#     definition = readChar(tempFileName, file.info(tempFileName)$size)
+#   )
+#   invisible(row)
+# }
+#
+# dataDiagnosticsAnalysis <- lapply(settingsList, ddAnalysisToRow)
+# dataDiagnosticsAnalysis <- bind_rows(dataDiagnosticsAnalysis) %>%
+#   distinct()
+#
+# fileName <- file.path(outputFolder, "data_diagnostics_analysis.csv")
+# CohortGenerator::writeCsv(dataDiagnosticsAnalysis, fileName)
+
+### Reading the jsons -----
+
+settingsList <- list()
+counter <- 0
+
+settingsCsv <- read.csv(file.path(outputFolder, "data_diagnostics_analysis.csv"))
+
+for(p in 1:nrow(settingsCsv)){
+  counter <- counter + 1
+  json_text <- settingsCsv$definition[p]
+
+  pretty_list <- RJSONIO::fromJSON(json_text)
+
+  settingsList[[counter]] <- pretty_list
 }
 
-dataDiagnosticsAnalysis <- lapply(settingsList, ddAnalysisToRow)
-dataDiagnosticsAnalysis <- bind_rows(dataDiagnosticsAnalysis) %>%
-  distinct()
-
-fileName <- file.path(outputFolder, "data_diagnostics_analysis.csv")
-CohortGenerator::writeCsv(dataDiagnosticsAnalysis, fileName)
 
 dbDiagnosticResults <- DbDiagnostics::executeDbDiagnostics(connectionDetails = dbProfileConnectionDetails,
                                                            resultsDatabaseSchema = "public",
