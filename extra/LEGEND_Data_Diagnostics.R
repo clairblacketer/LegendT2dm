@@ -188,6 +188,25 @@ for(m in 1:nrow(outcomes)){
   }
 }
 
+tempFileName <- tempfile()
+
+ddAnalysisToRow <- function(ddAnalysis) {
+  ParallelLogger::saveSettingsToJson(ddAnalysis, tempFileName)
+  row <- tibble(
+    analysisId = ddAnalysis$analysisId,
+    description = ddAnalysis$description,
+    definition = readChar(tempFileName, file.info(tempFileName)$size)
+  )
+  invisible(row)
+}
+
+dataDiagnosticsAnalysis <- lapply(settingsList, ddAnalysisToRow)
+dataDiagnosticsAnalysis <- bind_rows(dataDiagnosticsAnalysis) %>%
+  distinct()
+
+fileName <- file.path(outputFolder, "data_diagnostics_analysis.csv")
+CohortGenerator::writeCsv(dataDiagnosticsAnalysis, fileName)
+
 dbDiagnosticResults <- DbDiagnostics::executeDbDiagnostics(connectionDetails = dbProfileConnectionDetails,
                                                            resultsDatabaseSchema = "public",
                                                            resultsTableName = "sos_ohdsi_network_profile",
