@@ -171,7 +171,7 @@ for(m in 1:nrow(outcomes)){
     analysisName = analysisName,
     minAge = minAge,
     maxAge = maxAge,
-    requiredDomains = c(requiredDomains),
+    requiredDomains = c("condition","drug"),
     requiredDurationDays = requiredDurationDays,
     desiredDomains = outcomes$desired_domains[m],
     desiredVisits = outcomes$desired_visits[m],
