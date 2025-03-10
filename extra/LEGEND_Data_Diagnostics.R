@@ -176,11 +176,11 @@ for(m in 1:nrow(outcomes)){
     desiredDomains = outcomes$desired_domains[m],
     desiredVisits = outcomes$desired_visits[m],
     targetName = target,
-    targetConceptIds = targetConceptIds,
+    targetConceptIds = targetConceptIds$`Concept Id`,
     comparatorName = comparator,
-    comparatorConceptIds = comparatorConceptIds,
+    comparatorConceptIds = comparatorConceptIds$`Concept Id`,
     outcomeName = outcomes$atlasName[m],
-    outcomeConceptIds = outcomeConceptIds
+    outcomeConceptIds = outcomeConceptIds$`Concept Id`
   )
 
   settingsList[[counter]] <- analysisSettings
