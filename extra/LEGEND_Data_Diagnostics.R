@@ -135,7 +135,7 @@ all_classes_concept_sets <- all_classes_concept_sets %>%
 minAge <- 18
 maxAge <- 100
 requiredDurationDays <- 365
-requiredDomains = c("condition,drug")
+requiredDomains = c("condition","drug")
 
 ## Set up the empty list
 
@@ -171,7 +171,7 @@ for(m in 1:nrow(outcomes)){
     analysisName = analysisName,
     minAge = minAge,
     maxAge = maxAge,
-    requiredDomains = requiredDomains,
+    requiredDomains = c(requiredDomains),
     requiredDurationDays = requiredDurationDays,
     desiredDomains = outcomes$desired_domains[m],
     desiredVisits = outcomes$desired_visits[m],
@@ -190,24 +190,24 @@ for(m in 1:nrow(outcomes)){
 
 ### Saving the json -----
 
-# tempFileName <- tempfile()
-#
-# ddAnalysisToRow <- function(ddAnalysis) {
-#   ParallelLogger::saveSettingsToJson(ddAnalysis, tempFileName)
-#   row <- tibble(
-#     analysisId = ddAnalysis$analysisId,
-#     description = ddAnalysis$description,
-#     definition = readChar(tempFileName, file.info(tempFileName)$size)
-#   )
-#   invisible(row)
-# }
-#
-# dataDiagnosticsAnalysis <- lapply(settingsList, ddAnalysisToRow)
-# dataDiagnosticsAnalysis <- bind_rows(dataDiagnosticsAnalysis) %>%
-#   distinct()
-#
-# fileName <- file.path(outputFolder, "data_diagnostics_analysis.csv")
-# CohortGenerator::writeCsv(dataDiagnosticsAnalysis, fileName)
+tempFileName <- tempfile()
+
+ddAnalysisToRow <- function(ddAnalysis) {
+  ParallelLogger::saveSettingsToJson(ddAnalysis, tempFileName)
+  row <- tibble(
+    analysisId = ddAnalysis$analysisId,
+    description = ddAnalysis$description,
+    definition = readChar(tempFileName, file.info(tempFileName)$size)
+  )
+  invisible(row)
+}
+
+dataDiagnosticsAnalysis <- lapply(settingsList, ddAnalysisToRow)
+dataDiagnosticsAnalysis <- bind_rows(dataDiagnosticsAnalysis) %>%
+  distinct()
+
+fileName <- file.path(outputFolder, "data_diagnostics_analysis.csv")
+CohortGenerator::writeCsv(dataDiagnosticsAnalysis, fileName)
 
 ### Reading the jsons -----
 
